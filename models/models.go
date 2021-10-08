@@ -15,10 +15,10 @@ type BaseHandler struct {
 }
 
 type User struct {
-	UserId   primitive.ObjectID `bson:"user_id,omitempty"`
-	Name     string             `json:"name,omitempty"`
-	Email    string             `json:"email,omitempty"`
-	Password string             `json:"password,omitempty"`
+	_id      primitive.ObjectID `bson:"user_id,omitempty"`
+	Name     string             `bson:"name,omitempty"`
+	Email    string             `bson:"email,omitempty"`
+	Password string             `bson:"password,omitempty"`
 }
 
 type Users struct {
@@ -26,11 +26,11 @@ type Users struct {
 }
 
 type Post struct {
-	PostId          primitive.ObjectID `json:"post_id,omitempty"`
-	Caption         string             `json:"caption"`
-	ImageUrl        string             `json:"image_url,omitempty"`
-	PostedTimestamp time.Time          `json:"posted_timestamp,omitempty"`
-	UserId          primitive.ObjectID `json:"user_id,omitempty"`
+	_id             primitive.ObjectID `bson:"post_id,omitempty"`
+	Caption         string             `bson:"caption"`
+	ImageUrl        string             `bson:"image_url,omitempty"`
+	PostedTimestamp time.Time          `bson:"posted_timestamp,omitempty"`
+	UserId          primitive.ObjectID `bson:"user_id,omitempty"`
 }
 
 type Posts struct {
