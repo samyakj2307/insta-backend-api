@@ -1,4 +1,4 @@
-module AppointyTask
+module insta-backend-api
 
 go 1.17
 

@@ -12,7 +12,7 @@ import (
 	"net/http"
 	"strings"
 )
-import . "AppointyTask/models"
+import . "insta-backend-api/models"
 
 func GetUser(w http.ResponseWriter, r *http.Request, dbHandler BaseHandler) {
 	if r.Method == "GET" {

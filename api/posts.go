@@ -17,7 +17,7 @@ import (
 	"time"
 )
 
-import . "AppointyTask/models"
+import . "insta-backend-api/models"
 
 func AddPost(w http.ResponseWriter, r *http.Request, dbHandler BaseHandler) {
 	if r.Method == "POST" {

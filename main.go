@@ -9,8 +9,8 @@ import (
 	"time"
 )
 
-import . "AppointyTask/models"
-import . "AppointyTask/api"
+import . "insta-backend-api/models"
+import . "insta-backend-api/api"
 
 var dbHandler = BaseHandler{}
 
