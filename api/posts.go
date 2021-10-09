@@ -67,8 +67,6 @@ func AddPost(w http.ResponseWriter, r *http.Request, dbHandler BaseHandler) {
 			return
 		}
 
-		fmt.Println(post)
-
 		one, err := dbHandler.Posts.InsertOne(context.TODO(), post)
 		if err != nil {
 			return
