@@ -10,7 +10,6 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
-	"time"
 )
 
 func TestAddAndGetUser(t *testing.T) {
@@ -58,9 +57,10 @@ func TestAddAndGetUser(t *testing.T) {
 	userIdCreated := result["InsertedID"].(string)
 
 	// Testing if the User ID is matching with any of
-	//the documents present in db or not
+	//the documents present in Users Collection or not
 	// By Using Get User Method
 
+	//making a new  get request for Users
 	getUserRequest := httptest.NewRequest(http.MethodGet, "/users/"+userIdCreated, nil)
 
 	getUserWriter := httptest.NewRecorder()
@@ -78,9 +78,8 @@ func TestAddAndGetUser(t *testing.T) {
 
 	json.Unmarshal([]byte(getUserdata), &getUserResult)
 
+	//For Testing Purposes
 	//getUserResult["email"] = "Hello@gmail.com"
-
-	time.Sleep(10)
 
 	if getUserResult["email"] != postUserDetails["email"] || getUserResult["name"] != postUserDetails["name"] || getUserResult["_id"] != userIdCreated {
 		t.Error("Wrong Output")
@@ -132,9 +131,10 @@ func TestAddAndGetPost(t *testing.T) {
 	postIdCreated := result["InsertedID"].(string)
 
 	// Testing if the Post ID is matching with any of
-	//the documents present in db or not
+	//the documents present in Posts Collection or not
 	// By Using Get Post Method
 
+	//making a new  get request for Posts
 	getPostRequest := httptest.NewRequest(http.MethodGet, "/posts/"+postIdCreated, nil)
 
 	getPostWriter := httptest.NewRecorder()
@@ -152,9 +152,8 @@ func TestAddAndGetPost(t *testing.T) {
 
 	json.Unmarshal([]byte(getPostdata), &getPostResult)
 
+	//For Testing Purposes
 	//getPostResult["caption"] = "Hello@gmail.com"
-
-	time.Sleep(10)
 
 	if getPostResult["_id"] != postIdCreated || getPostResult["caption"] != addPostDetails["caption"] || getPostResult["image_url"] != addPostDetails["image_url"] || getPostResult["user_id"] != addPostDetails["user_id"] {
 		t.Error("Wrong Output")
