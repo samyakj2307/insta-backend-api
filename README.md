@@ -19,27 +19,27 @@
 >
 > `go run main.go`
 
-### Demo Screenshots
+# Demo Screenshots
 
 <br/>
 
-#### Adding User
+## Adding User
 
 ![Add User](./demoImages/addUser.png?raw=true "Add User")
 
-#### Get User By User Id
+## Get User By User Id
 
 ![Get User](./demoImages/getUser.png?raw=true "Get User")
 
-#### Adding Post
+## Adding Post
 
 ![Add Post](./demoImages/addPost.png?raw=true "Add Post")
 
-#### Get Post By Post Id
+## Get Post By Post Id
 
 ![Get Post](./demoImages/getPost.png?raw=true "Get Post")
 
-#### Get All Post of a User with Pagination (Page Size 4 in this Demo)
+## Get All Post of a User with Pagination (Page Size 4 in this Demo)
 
 ### Page no 1 (Latest 4 Post) 
 ![Get All Post](./demoImages/getAllPost1.png?raw=true "Get All Post")
