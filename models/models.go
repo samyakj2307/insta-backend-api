@@ -4,6 +4,7 @@ import (
 	"context"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
+	"net/url"
 	"time"
 )
 
@@ -15,10 +16,10 @@ type BaseHandler struct {
 }
 
 type User struct {
-	_id      primitive.ObjectID `bson:"user_id,omitempty"`
-	Name     string             `bson:"name,omitempty"`
-	Email    string             `bson:"email,omitempty"`
-	Password string             `bson:"password,omitempty"`
+	_id      primitive.ObjectID `bson:"user_id"`
+	Name     string             `bson:"name"`
+	Email    string             `bson:"email"`
+	Password string             `bson:"password"`
 }
 
 type Users struct {
@@ -26,11 +27,11 @@ type Users struct {
 }
 
 type Post struct {
-	_id             primitive.ObjectID `bson:"post_id,omitempty"`
+	_id             primitive.ObjectID `bson:"post_id"`
 	Caption         string             `bson:"caption"`
-	ImageUrl        string             `bson:"image_url,omitempty"`
-	PostedTimestamp time.Time          `bson:"posted_timestamp,omitempty"`
-	UserId          primitive.ObjectID `bson:"user_id,omitempty"`
+	ImageUrl        url.URL            `bson:"image_url"`
+	PostedTimestamp time.Time          `bson:"posted_timestamp"`
+	UserId          primitive.ObjectID `bson:"user_id"`
 }
 
 type Posts struct {
