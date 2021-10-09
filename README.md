@@ -27,27 +27,41 @@
 
 ![Add User](./demoImages/addUser.png?raw=true "Add User")
 
+<br/>
+
 ## Get User By User Id
 
 ![Get User](./demoImages/getUser.png?raw=true "Get User")
+
+<br/>
 
 ## Adding Post
 
 ![Add Post](./demoImages/addPost.png?raw=true "Add Post")
 
+<br/>
+
 ## Get Post By Post Id
 
 ![Get Post](./demoImages/getPost.png?raw=true "Get Post")
 
+<br/>
+
 ## Get All Post of a User with Pagination (Page Size 4 in this Demo)
 
-### Page no 1 (Latest 4 Post) 
+### Page no 1 (Latest 4 Post)
+
 ![Get All Post](./demoImages/getAllPost1.png?raw=true "Get All Post")
 ![Get All Post](./demoImages/getAllPost2.png?raw=true "Get All Post")
 
+<br/>
+
 ### Page no 2 (Next 4 Post)
+
 ![Get All Post](./demoImages/getAllPost3.png?raw=true "Get All Post")
 ![Get All Post](./demoImages/getAllPost4.png?raw=true "Get All Post")
+
+<br/>
 
 
 
