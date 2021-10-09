@@ -10,6 +10,18 @@
 >
 > `go get go.mongodb.org/mongo-driver/mongo`
 
+
+<br/>
+
+### Directory Structure
+
+* The root file of the application is `main.go`
+* All the models are in the `models` directory
+  <br/>
+* All the Handlers are in the `api` directory
+  <br/>
+* All the Unit Tests are in the `main_test.go` File
+
 <br/>
 
 ### After Installing the packages
