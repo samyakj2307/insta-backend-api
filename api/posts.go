@@ -12,6 +12,7 @@ import (
 	"log"
 	"net/http"
 	"net/url"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -82,20 +83,40 @@ func AddPost(w http.ResponseWriter, r *http.Request, dbHandler BaseHandler) {
 func GetAllPostsOfUser(w http.ResponseWriter, r *http.Request, dbHandler BaseHandler) {
 	if r.Method == "GET" {
 		w.Header().Add("Content-Type", "application/json")
-		userId, _ := primitive.ObjectIDFromHex(strings.Split(r.URL.String(), "/posts/users/")[1])
+
+		var pageNo = r.URL.Query().Get("pageno")
+
+		pageNoIntValue, err := strconv.ParseInt(pageNo, 10, 64)
+		if err != nil {
+			panic(err)
+		}
+
+		var pageSize = r.URL.Query().Get("pagesize")
+
+		pageSizeIntValue, err := strconv.ParseInt(pageSize, 10, 64)
+		if err != nil {
+			panic(err)
+		}
+
+		userId, _ := primitive.ObjectIDFromHex(strings.Split(r.URL.Path, "/posts/users/")[1])
 
 		//Sort posts in descending order by timestamp {the newest posts first}
-		opts := options.Find().SetSort(bson.D{{"posted_timestamp", -1}})
+		// Pagination
+		opts := options.Find().SetSort(bson.D{{"posted_timestamp", -1}}).SetSkip((pageNoIntValue - 1) * pageSizeIntValue).SetLimit(pageSizeIntValue)
 
-		cursor, err := dbHandler.Posts.Find(context.TODO(), bson.M{"user_id": userId}, opts)
+		filter := bson.M{"user_id": userId}
+
+		cursor, err := dbHandler.Posts.Find(context.TODO(), filter, opts)
 
 		if err != nil {
 			log.Fatal(err)
 		}
 		var currentUserPosts []bson.M
+
 		if err = cursor.All(context.TODO(), &currentUserPosts); err != nil {
 			log.Fatal(err)
 		}
+
 		sendEncodedJsonErr := json.NewEncoder(w).Encode(currentUserPosts)
 		if sendEncodedJsonErr != nil {
 			return
